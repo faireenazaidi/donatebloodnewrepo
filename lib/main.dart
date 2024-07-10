@@ -1,16 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'Routes/app_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+        apiKey: 'AIzaSyDdKjbjK-UyXXbNFtZL95Sc6bafTHn668w',
+        appId: '1:429028966002:android:99e657eff26444574f0ceb',
+        messagingSenderId: '429028966002',
+        projectId: 'donation-diversity-324f1',
+      )
+  );
   runApp(const MyApp());
-}
-
-class Firebase {
-  static initializeApp() {}
 }
 
 class MyApp extends StatelessWidget {
@@ -23,7 +26,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -84,9 +86,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-      ),
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

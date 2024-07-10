@@ -1,8 +1,6 @@
 
 import 'package:donationdiversity/Widgets/app_color.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../Routes/app_routes.dart';
@@ -30,7 +28,7 @@ class DashboardView extends GetView<DashboardController>{
             ],
           ),
           actions:[
-            const Padding(
+             Padding(
               padding: EdgeInsets.all(9.0),
               child: CircleAvatar(
 
@@ -64,7 +62,7 @@ class DashboardView extends GetView<DashboardController>{
 
               ListTile(
                 leading: const Icon(Icons.menu,color: Colors.white,),
-                title: const flutter.Text('Masters',style: TextStyle(color: Colors.white,),),
+                title: const flutter.Text('Donate',style: TextStyle(color: Colors.white,),),
                 tileColor: AppColor.tile3Color,
                 onTap: () {
                 },

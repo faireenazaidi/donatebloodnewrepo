@@ -43,8 +43,8 @@ dependencies:
   intl_phone_field: ^3.2.0
   timer_count_down: ^2.2.2
   smooth_page_indicator: ^1.1.0
-  firebase_auth:
-  firebase_core:
+  firebase_auth: ^5.1.2
+  firebase_core: ^3.2.0
 
 
 dev_dependencies:

@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 import 'category_Controller.dart';
@@ -20,7 +19,7 @@ class CategoryView extends GetView<CategoryController> {
              Get.back();
            },
              child: const Icon(Icons.arrow_back_ios_new,color: Colors.white,)),
-         title: Align(
+         title: const Align(
            alignment: Alignment.center,
              child: Text("Books",style: TextStyle(color: Colors.white),)),
          backgroundColor: Colors.black,
@@ -65,4 +64,5 @@ class CategoryView extends GetView<CategoryController> {
        },)
      ),
    );
-  }}
+  }
+}

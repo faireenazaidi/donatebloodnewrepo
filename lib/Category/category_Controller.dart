@@ -1,6 +1,7 @@
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class CategoryController extends GetxController {
+
   List books=[
     {
       "title": 'MTG Class 12th Biology, Complete Solution',
@@ -16,4 +17,5 @@ class CategoryController extends GetxController {
     },
 
   ];
+
 }
