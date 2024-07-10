@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "429028966002",
+    "project_id": "donation-diversity-324f1",
+    "storage_bucket": "donation-diversity-324f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:429028966002:android:99e657eff26444574f0ceb",
+        "android_client_info": {
+          "package_name": "com.example.donatediversitynew"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdKjbjK-UyXXbNFtZL95Sc6bafTHn668w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

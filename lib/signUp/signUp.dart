@@ -12,13 +12,13 @@ import '../Widgets/text_theme.dart';
 class SignUpView extends GetView<SignUpController>{
    SignUpView({super.key});
 
-  final String _verificationId="";
+  final String verificationId="";
   bool isEmail=false;
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return 
+    return
       SafeArea(
         child: Scaffold(
           resizeToAvoidBottomInset: false,
@@ -60,11 +60,11 @@ class SignUpView extends GetView<SignUpController>{
                           child: Image.asset(
                           "assets/ddlogo.png", height: 135,)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                           height: 40,
                           ),
                             Text("Signup", style: MyTextTheme.veryLargeWCN,),
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             Obx(
@@ -95,7 +95,7 @@ class SignUpView extends GetView<SignUpController>{
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                               Visibility(
@@ -123,7 +123,7 @@ class SignUpView extends GetView<SignUpController>{
 
                             Visibility(
                               visible: controller.selectedOption.value=="email",
-                              child: TextField(
+                              child: const TextField(
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.email_outlined,),
                                     hintText: "Enter Your Email ",
@@ -137,7 +137,7 @@ class SignUpView extends GetView<SignUpController>{
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
 
@@ -154,9 +154,9 @@ class SignUpView extends GetView<SignUpController>{
                               },
                               title: "Send OTP",
                               color: AppColor.buttonColor,
-                              suffixIcon: Icon(
+                              suffixIcon: const Icon(
                                 Icons.arrow_forward, color: Colors.white,),),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             Align(
@@ -185,6 +185,8 @@ class SignUpView extends GetView<SignUpController>{
 }
 
 class OTPDialog extends StatefulWidget {
+  const OTPDialog({super.key});
+
   @override
   _OTPDialogState createState() => _OTPDialogState();
 }
@@ -207,7 +209,7 @@ class _OTPDialogState extends State<OTPDialog> {
   }
 
   void startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_start == 0) {
         setState(() {
           timer.cancel();
@@ -257,7 +259,7 @@ class _OTPDialogState extends State<OTPDialog> {
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Container(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -265,14 +267,14 @@ class _OTPDialogState extends State<OTPDialog> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.close,size: 25,),
+                      icon: const Icon(Icons.close,size: 25,),
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
                     ),
                   ],
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -287,7 +289,7 @@ class _OTPDialogState extends State<OTPDialog> {
                   ],
                 ),
 
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text.rich(
                   TextSpan(
                     children: [
@@ -302,7 +304,7 @@ class _OTPDialogState extends State<OTPDialog> {
                   )
                   ),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: List.generate(otpLength, (index) {
@@ -311,7 +313,7 @@ class _OTPDialogState extends State<OTPDialog> {
                       child: TextField(
                         controller: otpControllers[index],
                         focusNode: focusNodes[index],
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: UnderlineInputBorder(
                           ),
                           counterText: "",
@@ -321,7 +323,7 @@ class _OTPDialogState extends State<OTPDialog> {
                         textAlign: TextAlign.center,
                         maxLength: 1,
                         cursorColor: AppColor.buttonColor,
-                        style: TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 18),
                         onChanged: (value) {
                           handleOtpChange(value, index);
                         },
@@ -330,7 +332,7 @@ class _OTPDialogState extends State<OTPDialog> {
                     );
                   }),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 MyButton(
                   borderRadius: 10,
                   elevation: 2,
@@ -344,9 +346,9 @@ class _OTPDialogState extends State<OTPDialog> {
                   },
                   title: "Submit",
                   color: AppColor.buttonColor,
-                  suffixIcon: Icon(
+                  suffixIcon: const Icon(
                     Icons.arrow_forward, color: Colors.white,),),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -371,14 +373,12 @@ class _OTPDialogState extends State<OTPDialog> {
                           ),
                         ),
                       ),
-                SizedBox(height: 10),
-                Row(
+                const SizedBox(height: 10),
+                const Row(
                 )
               ],
             ),
           ),
         );
-
-
   }
 }
