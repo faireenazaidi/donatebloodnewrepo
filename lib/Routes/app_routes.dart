@@ -6,6 +6,8 @@ import 'package:donationdiversity/signUp/signUp.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import '../Category/category_View.dart';
 import '../Category/category_binding.dart';
+import '../ChangePassword/changePassBinding.dart';
+import '../ChangePassword/changepassView.dart';
 import '../Dashboard/dashboard.view.dart';
 import '../Dashboard/dashboardBinding.dart';
 import '../Login/login_bining.dart';
@@ -22,6 +24,7 @@ class AppRoutes {
   static const String userInfoRoute = '/userInfo';
   static const String dashboardRoute = '/dashboard';
   static const String categoryRoute = '/category';
+  static const String changePassRoute = '/changePass';
 
 
 
@@ -60,6 +63,11 @@ class AppRoutes {
           page: ()=> CategoryView(),
         bindings: [CategoryBinding()]
       ),
+    GetPage(
+        name: changePassRoute,
+        page: ()=>  ChangePassView(),
+      bindings: [ChangePassBinding()]
+    ),
 
   ];
 }
