@@ -1,69 +1,131 @@
 import 'package:donationdiversity/Widgets/app_color.dart';
 import 'package:donationdiversity/Widgets/myButton.dart';
 import 'package:donationdiversity/Widgets/primary_text_field.dart';
-import 'package:donationdiversity/Widgets/text_theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'changePassController.dart';
 
 class ChangePassView extends GetView<ChangePassController>{
-  const ChangePassView({super.key});
+   ChangePassView({super.key});
+  final ChangePassController changePassController = Get.put(ChangePassController());
+
+
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-  return Scaffold(
-appBar: AppBar(
-  leading: InkWell(
-    onTap: (){
-      Get.back();
-    },
-    child: const Icon(Icons.arrow_back_ios_new,color: Colors.white,)),
-  title: Padding(
-    padding: const EdgeInsets.all(20.0),
-    child: Text("Change Password",style: TextStyle(color: Colors.white),),
-  ),
-    backgroundColor: Colors.black,
-),
+  return SafeArea(
+    child: Scaffold(
+      resizeToAvoidBottomInset: false,
+      body:
+       Stack(
+         alignment: Alignment.topLeft,
+        children: [
+           IconButton(
+             onPressed:(){
+               Get.back();
+               },
+             icon:Icon(Icons.arrow_back_ios_new,color: Colors.white,),),
+          Container(
+          height: double.infinity, width:  double.infinity,
+          decoration: BoxDecoration(
+          color: Colors.black,
+          image: DecorationImage(
+          image: AssetImage('assets/bg.png'),
+              fit: BoxFit.fitHeight,
+              ),
+              ),
 
-    body: Padding(
-    padding:  EdgeInsets.all(16.0),
-    child: Column(
-      children: [
-        PrimaryTextField(
-          hintText: "Old Password",
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        PrimaryTextField(
-          hintText: "New Password",
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        PrimaryTextField(
-          hintText: "Confirm Password",
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        MyButton(
-            onPressed: (){},
-            title: "Save",
-        color: AppColor.buttonColor,
-        ),
+          ),
 
-      ],
+            Container(
+            color: Colors.black.withOpacity(0.2), // Adjust opacity as needed
+            ),
+            Center(
+        child:Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.topCenter,
+             children: [
+               Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: Container(
+                   decoration:  BoxDecoration(
+                     borderRadius: BorderRadius.circular(15),
+                     color: AppColor.tile4Color,
+                     boxShadow:  [
+                       // BoxShadow(
+                       //   color: AppColor.buttonColor,
+                       //   offset: Offset(0.0, 1.0), //(x,y)
+                       //   blurRadius: 6.0,
+                       // ),
+                     ],
+                   ),
+                   height: 300,
+                   child: Padding(
+                     padding: const EdgeInsets.all(20.0),
+                     child: Column(
+                       children: [
+                         SizedBox(
+                           height: 10,
+                         ),
+                         const SizedBox(
+                           height: 40,
+                         ),
+                         const PrimaryTextField(
+                           hintText: "New Password",
+                         ),
+                         const SizedBox(
+                           height: 10,
+                         ),
+                         const PrimaryTextField(
+                           hintText: "Confirm Password",
+                         ),
+                         const SizedBox(
+                           height: 15,
+                         ),
+                         MyButton(
+                           borderRadius: 10,
+                           elevation: 2,
+                           onPressed: (){
+                           },
+                           title: "Save",
+                           color: AppColor.buttonColor,
+                         ),
+                       ],
+                     ),
+                   ),
+                 ),
+               ),
+               Positioned(
+               top: -40, // Adjust position vertically
+                 child: CircleAvatar(
+                   radius: 40,
+                   backgroundColor: Colors.white,
+                   child: Icon(Icons.key_sharp,size: 50,color: AppColor.buttonColor,),
+                 ),
+               ),
 
-
-
-    ),
-      ),
-
-    );
+               Positioned(
+                   top:40,
+                   child: Text("Reset Password",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),))
+             ],
+            ),
+          ],
+        ),
+            )
+            ]
+            ),
+      )
+  );
     }
     }
 
