@@ -27,11 +27,6 @@ class ChangePassView extends GetView<ChangePassController>{
        Stack(
          alignment: Alignment.topLeft,
         children: [
-           IconButton(
-             onPressed:(){
-               Get.back();
-               },
-             icon:Icon(Icons.arrow_back_ios_new,color: Colors.white,),),
           Container(
           height: double.infinity, width:  double.infinity,
           decoration: BoxDecoration(
@@ -43,7 +38,14 @@ class ChangePassView extends GetView<ChangePassController>{
               ),
 
           ),
-
+          Padding(
+            padding: const EdgeInsets.only(top: 15,left: 10),
+            child: InkWell(
+              onTap: (){
+                Get.back();
+              },
+                child: Icon(Icons.arrow_back_ios_new,color: AppColor.white,)),
+          ),
             Container(
             color: Colors.black.withOpacity(0.2), // Adjust opacity as needed
             ),

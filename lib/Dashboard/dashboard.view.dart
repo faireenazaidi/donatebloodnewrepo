@@ -58,6 +58,7 @@ class DashboardView extends GetView<DashboardController>{
                   title: const flutter.Text('View Profile',style: TextStyle(color: Colors.white,),),
                   tileColor:AppColor.tile2Color,
                   onTap: () {
+                      Get.toNamed(AppRoutes.profileView);
 
                   },
                 ),

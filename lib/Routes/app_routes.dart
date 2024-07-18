@@ -12,6 +12,8 @@ import '../Dashboard/dashboard.view.dart';
 import '../Dashboard/dashboardBinding.dart';
 import '../Login/login_bining.dart';
 import '../Login/login_view.dart';
+import '../Profile/profileBinding.dart';
+import '../Profile/profileView.dart';
 import '../createPassword/password_Bining.dart';
 import '../createPassword/password_View.dart';
 import '../signUp/signUpBinding.dart';
@@ -25,6 +27,7 @@ class AppRoutes {
   static const String dashboardRoute = '/dashboard';
   static const String categoryRoute = '/category';
   static const String changePassRoute = '/changePass';
+  static const String profileView = '/profile';
 
 
 
@@ -68,6 +71,12 @@ class AppRoutes {
         page: ()=>  ChangePassView(),
       bindings: [ChangePassBinding()]
     ),
+    GetPage(
+      name: profileView,
+      page:()=> ProfileView(),
+      bindings: [ProfileViewBinding()]
+    ),
 
   ];
 }
+
