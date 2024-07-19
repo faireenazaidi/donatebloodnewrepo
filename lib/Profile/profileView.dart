@@ -2,7 +2,11 @@ import 'package:donationdiversity/Widgets/app_color.dart';
 import 'package:donationdiversity/Widgets/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+
+import '../Dashboard/dashboard.view.dart';
 
 class ProfileView extends GetView {
   @override
@@ -11,8 +15,10 @@ class ProfileView extends GetView {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         leading:  InkWell(
-          onTap: (){},
-          child:const Icon(Icons.arrow_back_ios_new)
+          onTap: (){
+            Get.back();
+          },
+          child: Icon(Icons.arrow_back_ios_new)
         ),
         backgroundColor: Colors.white,
         title: Text("Donor"),

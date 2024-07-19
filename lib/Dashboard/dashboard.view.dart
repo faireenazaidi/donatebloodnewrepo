@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../Profile/profileView.dart';
 import '../Routes/app_routes.dart';
 import '../Widgets/listItem.dart';
 import 'dashboardController.dart';
@@ -32,8 +33,14 @@ class DashboardView extends GetView<DashboardController>{
           actions:[
              Padding(
               padding: EdgeInsets.all(9.0),
-              child: CircleAvatar(
+              child: InkWell(
+                onTap: (){
+                  Get.to(ProfileView());
+                },
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage("https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"),
 
+                ),
               ),
             ),],
           leading: Builder(
@@ -58,6 +65,7 @@ class DashboardView extends GetView<DashboardController>{
                   title: const flutter.Text('View Profile',style: TextStyle(color: Colors.white,),),
                   tileColor:AppColor.tile2Color,
                   onTap: () {
+                      Get.back();
                       Get.toNamed(AppRoutes.profileView);
 
                   },

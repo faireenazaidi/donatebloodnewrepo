@@ -14,6 +14,8 @@ import '../Login/login_bining.dart';
 import '../Login/login_view.dart';
 import '../Profile/profileBinding.dart';
 import '../Profile/profileView.dart';
+import '../SplashScreen/splashBinding.dart';
+import '../SplashScreen/splashView.dart';
 import '../createPassword/password_Bining.dart';
 import '../createPassword/password_View.dart';
 import '../signUp/signUpBinding.dart';
@@ -28,11 +30,7 @@ class AppRoutes {
   static const String categoryRoute = '/category';
   static const String changePassRoute = '/changePass';
   static const String profileView = '/profile';
-
-
-
-
-
+  static const String splashScreen = '/splash';
 
   static List<GetPage> pages = [
     GetPage(
@@ -75,6 +73,11 @@ class AppRoutes {
       name: profileView,
       page:()=> ProfileView(),
       bindings: [ProfileViewBinding()]
+    ),
+    GetPage(
+        name: splashScreen,
+        page: ()=> SplashScreen(),
+  bindings: [SplashBinding()]
     ),
 
   ];

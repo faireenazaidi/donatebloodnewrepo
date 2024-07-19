@@ -31,20 +31,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: AppRoutes.dashboardRoute,
+      initialRoute: AppRoutes.splashScreen,
       getPages: AppRoutes.pages,
     );
   }
 }
- class SplashScreen extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 3));
-    Get.toNamed(DashboardView() as String);
-    return Scaffold(
-      backgroundColor: Colors.cyan,
-    );
-  }
-
- }
 
