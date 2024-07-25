@@ -1,11 +1,11 @@
-import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'Dashboard/dashboard.view.dart';
+import 'package:get_storage/get_storage.dart';
 import 'Routes/app_routes.dart';
 
 void main() async {
+  await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
       options: const FirebaseOptions(
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: AppRoutes.splashScreen,
+      initialRoute: AppRoutes.loginRoute,
       getPages: AppRoutes.pages,
     );
   }

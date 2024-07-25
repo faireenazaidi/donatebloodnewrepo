@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class SignUpController extends GetxController {
   final Rx<TextEditingController> phoneController = TextEditingController().obs;
   final Rx<TextEditingController> otpController = TextEditingController().obs;
-  RxString selectedOption = 'mobile'.obs;
+  RxString selectedOption = 'email'.obs;
   RxString verificationID = "".obs;
   FirebaseAuth auth = FirebaseAuth.instance;
   void verifyPhoneNumber() async {
@@ -33,6 +33,12 @@ class SignUpController extends GetxController {
         update();
       },
     );
+  }
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
   }
 
   void signInWithPhoneNumber() async {

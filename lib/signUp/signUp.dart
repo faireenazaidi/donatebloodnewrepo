@@ -11,10 +11,8 @@ import '../Widgets/text_theme.dart';
 
 class SignUpView extends GetView<SignUpController>{
    SignUpView({super.key});
-
   final String verificationId="";
   bool isEmail=false;
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -72,26 +70,26 @@ class SignUpView extends GetView<SignUpController>{
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Radio<String>(
-                                      value:"mobile",
-                                      activeColor: AppColor.buttonColor,
-                                      groupValue: controller.selectedOption.value,
-                                      onChanged: (String? value){
-                                        print(value);
-                                      controller.selectedOption.value=value!;
-                                      controller.update();
-                                  }),
-                                  Text("Mobile Number",style: MyTextTheme.mediumWCN,),
-
-                                  Radio<String>(
                                       value: "email",
                                       groupValue: controller.selectedOption.value,
                                       activeColor: AppColor.buttonColor,
                                       onChanged: (String? value){
                                         print(value);
-                                      controller.selectedOption.value=value!;
-                                      controller.update();
+                                        controller.selectedOption.value=value!;
+                                        controller.update();
                                   }),
-                                  Text("Email",style: MyTextTheme.mediumWCN,),
+                                  Text("E-mail",style: MyTextTheme.mediumWCN,),
+
+                                  Radio<String>(
+                                      value:"mobile",
+                                      activeColor: AppColor.buttonColor,
+                                      groupValue: controller.selectedOption.value,
+                                      onChanged: (String? value){
+                                        print(value);
+                                        controller.selectedOption.value=value!;
+                                        controller.update();
+                                  }),
+                                  Text("Mobile Number",style: MyTextTheme.mediumWCN,),
                                 ],
                               ),
                             ),
@@ -119,13 +117,13 @@ class SignUpView extends GetView<SignUpController>{
                                     print(phone.completeNumber);
                                   }
                                 ),
-                              ),
+                               ),
 
                             Visibility(
                               visible: controller.selectedOption.value=="email",
-                              child: const TextField(
+                              child:  TextField(
                                 decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.email_outlined,),
+                                  prefixIcon: Icon(Icons.email_outlined,color: AppColor.buttonColor,),
                                     hintText: "Enter Your Email ",
                                     filled: true,
                                     fillColor: Colors.white,
@@ -137,6 +135,7 @@ class SignUpView extends GetView<SignUpController>{
                                 ),
                               ),
                             ),
+
                             const SizedBox(
                               height: 20,
                             ),
@@ -146,7 +145,7 @@ class SignUpView extends GetView<SignUpController>{
                               elevation: 2,
                               width: 353,
                               onPressed: () {
-                                controller.verifyPhoneNumber();
+                                //controller.verifyPhoneNumber();
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) => OTPDialog(),

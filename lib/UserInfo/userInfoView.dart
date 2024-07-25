@@ -2,17 +2,17 @@ import 'package:donationdiversity/UserInfo/userInfoController.dart';
 import 'package:donationdiversity/Widgets/myButton.dart';
 import 'package:donationdiversity/Widgets/primary_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
-
 import '../Routes/app_routes.dart';
 import '../Widgets/app_color.dart';
 import '../Widgets/text_theme.dart';
 
 class UserInfoView extends GetView<UserInfoController>{
+
   @override
   Widget build(BuildContext context) {
+    Get.put(UserInfoController());
     // TODO: implement build
     return 
       SafeArea(
@@ -36,8 +36,7 @@ class UserInfoView extends GetView<UserInfoController>{
               child: Padding(
                 padding: const EdgeInsets.only(
                     top: 30.0, left: 8.0, right: 8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                child: ListView(
                   children: [
                     SizedBox(
                       height: 40,
@@ -61,46 +60,69 @@ class UserInfoView extends GetView<UserInfoController>{
 
                       Text("User Info", style: MyTextTheme.veryLargeWCN,),
                       SizedBox(
-                        height: 30,
+                        height: 10,
                       ),
-                    PrimaryTextField(
-                      prefixIcon: Icon(Icons.person_outline_rounded,),
-                      backgroundColor: Colors.white,
-                      hintText: "Enter your name",
-                    ),SizedBox(
-                      height: 15,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: PrimaryTextField(
+                        controller: controller.usernameController,
+                        prefixIcon: Icon(Icons.person_outline_rounded,),
+                        backgroundColor: Colors.white,
+                        hintText: "Enter your name",
+                        obscureText: false,
+
+                      ),
                     ),
-                    PrimaryTextField(
-                      prefixIcon: Icon(Icons.email_outlined),
-                      backgroundColor: Colors.white,
-                      hintText: "Enter your email",
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: PrimaryTextField(
+                        controller: controller.emailController,
+                        prefixIcon: Icon(Icons.email_outlined),
+                        backgroundColor: Colors.white,
+                        hintText: "Enter your email",
+                        obscureText: false,
+                      ),
                     ),
-                    SizedBox(
-                      height: 15,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: PrimaryTextField(
+                        controller: controller.addressController,
+                        prefixIcon: Icon(Icons.location_on_outlined),
+                        hintText:"Enter your address",
+                        obscureText: false,
+                      ),
                     ),
-                    PrimaryTextField(
-                      prefixIcon: Icon(Icons.location_on_outlined),
-                      hintText:"Enter your address",
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: PrimaryTextField(
+                        controller: controller.idController,
+                       prefixIcon: Icon(Icons.account_box_outlined),
+                        hintText: "Personal Id Number",
+                        obscureText: false,
+                      ),
                     ),
-                    SizedBox(
-                      height: 15,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: PrimaryTextField(
+                        controller: controller.numberController,
+                        prefixIcon: Icon(Icons.phone),
+                        hintText: ("Enter your Number"),
+                        obscureText: false,
+                      ),
                     ),
-                    PrimaryTextField(
-                     prefixIcon: Icon(Icons.account_box_outlined),
-                      hintText: "Personal Id Number",
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    MyButton(
-                      borderRadius: 10,
-                      elevation: 2,
-                      onPressed: (){
-                        Get.toNamed(AppRoutes.dashboardRoute);
-                      },
-                      title: "Submit Details",
-                      color: AppColor.buttonColor,
-                      suffixIcon: Icon(Icons.arrow_forward,color: Colors.white,),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: MyButton(
+                        borderRadius: 10,
+                        elevation: 2,
+                        onPressed: (){
+                          Get.toNamed(AppRoutes.dashboardRoute);
+                          controller.register(context);
+                        },
+                        title: "Submit Details",
+                        color: AppColor.buttonColor,
+                        suffixIcon: Icon(Icons.arrow_forward,color: Colors.white,),
+                      ),
                     ),
 
                   ],

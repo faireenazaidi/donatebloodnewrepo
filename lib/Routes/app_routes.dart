@@ -35,7 +35,7 @@ class AppRoutes {
   static List<GetPage> pages = [
     GetPage(
       name: loginRoute,
-      page: () =>  const LoginView(),
+      page: () =>   LoginView(),
       bindings: [LoginBinding()],
     ),
 

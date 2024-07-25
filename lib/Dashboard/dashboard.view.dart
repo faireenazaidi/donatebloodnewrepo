@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../Login/login_view.dart';
 import '../Profile/profileView.dart';
 import '../Routes/app_routes.dart';
 import '../Widgets/listItem.dart';
@@ -98,7 +99,9 @@ class DashboardView extends GetView<DashboardController>{
                   leading: const Icon(Icons.logout,color: Colors.white,),
                   title: const flutter.Text('Logout',style: TextStyle(color: Colors.white,),),
                 tileColor:AppColor.tile6Color,
-                onTap:(){}
+                onTap:(){
+                    Get.to(LoginView());
+                }
               ),
             ],
 
