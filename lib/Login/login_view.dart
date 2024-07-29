@@ -7,8 +7,7 @@ import '../Widgets/primary_text_field.dart';
 import '../Widgets/text_theme.dart';
 import 'login_controller.dart';
 
-
-class LoginView extends GetView <LoginController> {
+class LoginView extends GetView<LoginController> {
   const LoginView({super.key});
 
   @override
@@ -38,9 +37,7 @@ class LoginView extends GetView <LoginController> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
@@ -54,43 +51,34 @@ class LoginView extends GetView <LoginController> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 40,
-                    ),
+                    SizedBox(height: 40),
                     Text(
                       "Login",
                       style: MyTextTheme.veryLargeWCN,
                     ),
-                    SizedBox(
-                      height: 40,
-                    ),
+                    SizedBox(height: 40),
                     PrimaryTextField(
-                      controller: controller.usernameController, // Assign controller
+                      controller: controller.usernameController,
                       prefixIcon: Icon(Icons.email_outlined),
                       hintText: "Enter your email",
                       backgroundColor: Colors.white,
                       obscureText: false,
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: 20),
                     PrimaryTextField(
-                      controller: controller.passwordController, // Assign controller
+                      controller: controller.passwordController,
                       prefixIcon: Icon(Icons.lock_outline_rounded),
                       hintText: "Enter password",
                       backgroundColor: Colors.white,
                       obscureText: true,
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Obx(() => GestureDetector(
                           onTap: () {
-                            controller.isChecked.value =
-                            !controller.isChecked.value;
+                            controller.isChecked.value = !controller.isChecked.value;
                             print("VALUE ${controller.isChecked.value}");
                           },
                           child: Container(
@@ -115,9 +103,7 @@ class LoginView extends GetView <LoginController> {
                                 : null,
                           ),
                         )),
-                        SizedBox(
-                          width: 8,
-                        ),
+                        SizedBox(width: 8),
                         Text(
                           "Remember me",
                           style: MyTextTheme.mediumBCN,
@@ -126,61 +112,56 @@ class LoginView extends GetView <LoginController> {
                         Text(
                           "Forgot Password?",
                           style: MyTextTheme.mediumBCN,
-                        )
+                        ),
                       ],
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: 20),
                     MyButton(
                       borderRadius: 10,
                       elevation: 2,
                       onPressed: () {
-                        // Call login method from controller
                         controller.login(context);
-                        Get.toNamed(AppRoutes.dashboardRoute);
                       },
                       title: "Sign in",
-                      color: AppColor.buttonColor,// Change to your desired button color
+                      color: AppColor.buttonColor,
                       suffixIcon: Icon(
                         Icons.arrow_forward,
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(
-                      height: 15,
+                    SizedBox(height: 15),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Divider(
+                            color: Colors.white,
+                            indent: 120,
+                            endIndent: 0,
+                            thickness: 0.6,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          "or",
+                          style: MyTextTheme.mediumBCN,
+                        ),
+                        Expanded(
+                          child: Divider(
+                            color: Colors.white,
+                            endIndent: 110,
+                            indent: 10,
+                            thickness: 0.6,
+                          ),
+                        ),
+                      ],
                     ),
-                    Row(children: <Widget>[
-                      Expanded(
-                        child: Divider(
-                          color: Colors.white,
-                          indent: 120,
-                          endIndent: 0,
-                          thickness: 0.6,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "or",
-                        style: MyTextTheme.mediumBCN,
-                      ),
-                      Expanded(
-                        child: Divider(
-                          color: Colors.white,
-                          endIndent: 110,
-                          indent: 10,
-                          thickness: 0.6,
-                        ),
-                      )
-                    ]),
                     Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          "Don't have an account,",
-                          style: MyTextTheme.mediumWCN,
-                        )),
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        "Don't have an account,",
+                        style: MyTextTheme.mediumWCN,
+                      ),
+                    ),
                     InkWell(
                       onTap: () {
                         Get.toNamed(AppRoutes.signUpRoute);
@@ -192,7 +173,7 @@ class LoginView extends GetView <LoginController> {
                           style: MyTextTheme.largeBCB,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -202,6 +183,4 @@ class LoginView extends GetView <LoginController> {
       ),
     );
   }
-
-  static fromJson(param0) {}
 }

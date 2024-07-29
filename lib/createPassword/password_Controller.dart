@@ -5,6 +5,10 @@ import 'package:get/get.dart';
 import '../Routes/app_routes.dart';
 
 class PasswordController extends GetxController {
+
+  TextEditingController passwordC =TextEditingController();
+  TextEditingController confirmPasC =TextEditingController();
+
   final FlutterSecureStorage _storage = FlutterSecureStorage();
   RxBool isPasswordObscured = true.obs;
   RxBool isConfirmObscured = true.obs;
@@ -19,19 +23,19 @@ class PasswordController extends GetxController {
   void toggleConfirmPasswordVisibility() {
     isConfirmObscured.value = !isConfirmObscured.value;
   }
-  Future<void> savePassword() async {
-    await _storage.write(key: 'password', value: password.value);
-  }
+  // Future<void> savePassword() async {
+  //   await _storage.write(key: 'password', value: password.value);
+  // }
+  //
+  // Future<String?> getPassword() async {
+  //   return await _storage.read(key: 'password');
+  // }
 
-  Future<String?> getPassword() async {
-    return await _storage.read(key: 'password');
-  }
-
-  void comparePasswords() {
+  void comparePasswords(String pass) {
     if (password.value == confirmPassword.value) {
       // Get.snackbar("Success", 'Password match',
       //     snackPosition: SnackPosition.TOP,colorText: Colors.green);
-      Get.toNamed(AppRoutes.userInfoRoute);
+      Get.toNamed(AppRoutes.userInfoRoute,arguments: pass);
     }
     else {
      Get.snackbar("Alert!", "Password don't match",

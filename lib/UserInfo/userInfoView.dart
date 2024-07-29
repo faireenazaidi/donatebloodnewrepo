@@ -9,11 +9,9 @@ import '../Widgets/app_color.dart';
 import '../Widgets/text_theme.dart';
 
 class UserInfoView extends GetView<UserInfoController>{
-
   @override
   Widget build(BuildContext context) {
     Get.put(UserInfoController());
-    // TODO: implement build
     return 
       SafeArea(
         child: Scaffold(
@@ -24,19 +22,20 @@ class UserInfoView extends GetView<UserInfoController>{
               height: Get.height,width: Get.width,
               decoration: BoxDecoration(
                   image: DecorationImage(
+                    // opacity: 0.4,colorFilter: ColorFilter.mode(Colors.black, BlendMode.clear),
                       image: AssetImage('assets/bg.png'),
                       fit: BoxFit.fitHeight
                   )
               ),
             ),
           Container(
-            color: Colors.black.withOpacity(0.4),
+             color: Colors.black.withOpacity(0.4),
           ),
           SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(
                     top: 30.0, left: 8.0, right: 8.0),
-                child: ListView(
+                child: Column(
                   children: [
                     SizedBox(
                       height: 40,
@@ -70,6 +69,13 @@ class UserInfoView extends GetView<UserInfoController>{
                         backgroundColor: Colors.white,
                         hintText: "Enter your name",
                         obscureText: false,
+                        validator: (value)
+                        {
+                          if (value == null || value.isEmpty) {
+                            return 'Name is required';
+                          }
+                          return null;
+                        },
 
                       ),
                     ),

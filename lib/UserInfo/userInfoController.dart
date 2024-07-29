@@ -14,16 +14,19 @@ class UserInfoController extends GetxController{
 
   App app = App();
 
+
   register(context)  async {
+    var pass = Get.arguments(0);
+
     var body = {
 
             "firstName":usernameController.text.toString(),
-            "lastName":"zaidi",
+            "lastName":"",
             "email":emailController.text.toString(),
             "mobile":numberController.text.toString(),
             "address":addressController.text.toString(),
             "personalId":idController.text.toString(),
-            "password":"234",
+            "password": pass,
             "catId":"1"
         };
 

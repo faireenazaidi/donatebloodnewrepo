@@ -61,6 +61,7 @@ class PasswordView extends GetView<PasswordController> {
                       SizedBox(height: 30),
                       Obx(
                             () => PrimaryTextField(
+                              controller: controller.passwordC,
                           minLength: 4,
                           maxLength: 12,
                           onChanged: (value) => controller.password.value = value,
@@ -90,6 +91,7 @@ class PasswordView extends GetView<PasswordController> {
                       SizedBox(height: 15),
                       Obx(
                             () => PrimaryTextField(
+                              controller: controller.confirmPasC,
                           minLength: 4,
                           maxLength: 12,
                           onChanged: (value) => controller.confirmPassword.value = value,
@@ -105,7 +107,9 @@ class PasswordView extends GetView<PasswordController> {
                               controller.toggleConfirmPasswordVisibility();
                             },
                           ),
-                          validator: (value) {
+
+                          validator: (value)
+                          {
                             if (value == null || value.isEmpty) {
                               return 'Confirm Password is required';
                             }
@@ -125,10 +129,12 @@ class PasswordView extends GetView<PasswordController> {
                         elevation: 2,
                         width: 353,
                         onPressed: () {
+                          print(controller.confirmPasC.value.text.toString());
                           if (_formKey.currentState?.validate() ?? false) {
-                            
-                            controller.comparePasswords();
-                            Get.toNamed(AppRoutes.userInfoRoute);
+
+                            controller.comparePasswords(controller.confirmPasC.value.text);
+                           // Get.toNamed(AppRoutes.userInfoRoute);
+                            // Get.toNamed(AppRoutes.dashboardRoute);
                           }
                           else{
                             Get.snackbar("Validation Error", "Please try again");

@@ -77,6 +77,7 @@ class PrimaryTextField extends StatelessWidget {
               maxHeight: 60,
               minHeight: 40,
             ),
+
             floatingLabelBehavior: FloatingLabelBehavior.always,
             filled: true,
             fillColor: Colors.white,
