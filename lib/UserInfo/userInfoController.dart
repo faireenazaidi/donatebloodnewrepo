@@ -16,7 +16,7 @@ class UserInfoController extends GetxController{
 
 
   register(context)  async {
-    var pass = Get.arguments(0);
+    var pass = Get.arguments[0];
 
     var body = {
 

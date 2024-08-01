@@ -1,8 +1,6 @@
 // import 'package:get_storage/get_storage.dart';
 // import 'package:get/get.dart';
 // import '../Login/login_view.dart';
-//
-//
 // class UserStorage extends GetxController {
 //   final userStorage = GetStorage('user');
 //

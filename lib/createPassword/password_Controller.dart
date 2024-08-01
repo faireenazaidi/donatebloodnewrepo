@@ -23,13 +23,6 @@ class PasswordController extends GetxController {
   void toggleConfirmPasswordVisibility() {
     isConfirmObscured.value = !isConfirmObscured.value;
   }
-  // Future<void> savePassword() async {
-  //   await _storage.write(key: 'password', value: password.value);
-  // }
-  //
-  // Future<String?> getPassword() async {
-  //   return await _storage.read(key: 'password');
-  // }
 
   void comparePasswords(String pass) {
     if (password.value == confirmPassword.value) {

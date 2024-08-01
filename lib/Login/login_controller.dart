@@ -1,15 +1,24 @@
 import 'dart:convert';
+import 'package:donationdiversity/Routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../Widgets/app_util.dart';
 
 class LoginController extends GetxController {
-  RxBool isChecked = true.obs;
-  App app = App();
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  RxBool isChecked = false.obs;
+  RxBool isPassObscured = true.obs;
+  var pass = ''.obs;
+  void togglePassVisibility()
+  {
+    isPassObscured.value = !isPassObscured.value;
+  }
+  App app = App();
+
   final storage = FlutterSecureStorage();
 
   void login(BuildContext context) async {
@@ -41,7 +50,7 @@ class LoginController extends GetxController {
         // }
 
         // Navigate to dashboard route
-        Get.toNamed('/dashboardRoute');
+        Get.toNamed(AppRoutes.dashboardRoute);
 
       } else {
         print('Login failed with status code ${response.statusCode}');
@@ -58,7 +67,7 @@ class LoginController extends GetxController {
             TextButton(
               child: Text('OK'),
               onPressed: () {
-                Navigator.of(context).pop();
+               Get.back();
               },
             ),
           ],

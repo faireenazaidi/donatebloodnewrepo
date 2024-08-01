@@ -1,6 +1,7 @@
 import 'package:donationdiversity/Widgets/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import '../Routes/app_routes.dart';
 import '../Widgets/myButton.dart';
 import '../Widgets/primary_text_field.dart';
@@ -66,11 +67,19 @@ class LoginView extends GetView<LoginController> {
                     ),
                     SizedBox(height: 20),
                     PrimaryTextField(
-                      controller: controller.passwordController,
+                      controller: TextEditingController(),
+                        onChanged: (value) => controller.pass.value = value,
                       prefixIcon: Icon(Icons.lock_outline_rounded),
                       hintText: "Enter password",
-                      backgroundColor: Colors.white,
-                      obscureText: true,
+                      obscureText: controller.isPassObscured.value,
+                      suffixIcon: IconButton(
+                        icon: Icon(controller.isPassObscured.value
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        onPressed: () {
+                          controller.togglePassVisibility();
+                        },
+                      ),
                     ),
                     SizedBox(height: 20),
                     Row(
