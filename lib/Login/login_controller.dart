@@ -22,7 +22,7 @@ class LoginController extends GetxController {
   final storage = FlutterSecureStorage();
 
   void login(BuildContext context) async {
-    var url = Uri.parse('https://4359-14-97-58-74.ngrok-free.app/Help/Api/POST-api-Login-userLogin');
+    var url = Uri.parse('https://5b42-14-97-58-74.ngrok-free.app/API/Login/userLogin');
 
     try {
       // Send POST request to login endpoint
@@ -32,7 +32,7 @@ class LoginController extends GetxController {
           'Content-Type': 'application/json',
         },
         body: jsonEncode({
-          "userName": usernameController.text.toString(),
+          "email": usernameController.text.toString(),
           "password": passwordController.text.toString(),
         }),
       );

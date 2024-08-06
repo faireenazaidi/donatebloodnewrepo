@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:donationdiversity/Routes/app_routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart'as http;
 import '../Widgets/app_util.dart';
 
 class UserInfoController extends GetxController{
@@ -14,32 +15,70 @@ class UserInfoController extends GetxController{
 
   App app = App();
 
+  register(context)  async{
+    var headers = {
+      'Content-Type': 'application/json'
+    };
+    var request = http.Request('POST', Uri.parse('https://5b42-14-97-58-74.ngrok-free.app/API/Login/registerUser'));
+    request.body = json.encode({
+      "firstName": "gxhccu",
+      "lastName": "",
+      "email": "faireenazaidi@gmail.com",
+      "mobile": "816468854808",
+      "address": "ueueud",
+      "personalId": "hehdj",
+      "password": "1",
+      "catId": "1"
+    });
+    request.headers.addAll(headers);
 
-  register(context)  async {
-    var pass = Get.arguments[0];
+    http.StreamedResponse response = await request.send();
 
-    var body = {
+    if (response.statusCode == 200) {
+      print(await response.stream.bytesToString());
+      print("@@@@@@@@@@@@@@@@@@");
+    }
+    else {
+      print(response.reasonPhrase);
+    }
 
-            "firstName":usernameController.text.toString(),
-            "lastName":"",
-            "email":emailController.text.toString(),
-            "mobile":numberController.text.toString(),
-            "address":addressController.text.toString(),
-            "personalId":idController.text.toString(),
-            "password": pass,
-            "catId":"1"
-        };
-
-
-var data = await app.api("API/Login/registerUser", body, context);
-     print(data.toString());
-     if(data['status'] == 'success'){
-       Get.toNamed(AppRoutes.dashboardRoute);
-     }
-     else
-       {
-         Get.snackbar("Error", "Registration failed, Please try again later");
-       }
   }
 
+//   register(context)  async {
+//     var pass = Get.arguments[0];
+//
+//     var body = {
+//
+//             "firstName":usernameController.text.toString(),
+//             "lastName":"",
+//             "email":emailController.text.toString(),
+//             "mobile":numberController.text.toString(),
+//             "address":addressController.text.toString(),
+//             "personalId":idController.text.toString(),
+//             "password": pass,
+//             "catId":"1"
+//         };
+//
+//
+// var data = await app.api("API/Login/registerUser", body, context);
+//     print("API Response: ${data.toString()}");
+//     if(data['message'] == "success"){
+//       // Get.toNamed(AppRoutes.dashboardRoute);
+//       print("@@@@@@@@@@@@@@");
+//      }
+//      else
+//        {
+//          print("##############");
+//         // Get.snackbar("Error", "Registration failed, Please try again later");
+//        }
+//   }
+
 }
+
+
+    // Debugging: Print the response to check its structure
+
+
+    // Check if `data` is null or does not contain the expected key
+
+

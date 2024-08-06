@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class DashboardController extends GetxController{
@@ -37,6 +38,29 @@ List category=[
     "image":"assets/Books.png"
   }
 ];
+
+  Future<bool> onExit() async {
+    final shouldExit = await showDialog<bool>(
+      context: Get.context!,
+      builder: (context) =>
+          AlertDialog(
+        title: Text('Confirm Exit'),
+        content: Text('Do you really want to exit?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text('No'),
+          ),
+          TextButton(
+            onPressed: () =>  SystemNavigator.pop(),
+            child: Text('Yes'),
+
+          ),
+        ],
+      ),
+    );
+    return shouldExit ?? false;
+  }
 
   }
 

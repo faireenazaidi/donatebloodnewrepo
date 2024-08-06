@@ -379,15 +379,16 @@ class _OTPDialogState extends State<OTPDialog> {
               borderRadius: 10,
               elevation: 2,
               onPressed: () {
-                String otp = getOtp();
-                if (otp.length == otpLength) {
-                  verifyOtp(otp);
-                  print('Entered OTP: $otp');
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Please enter a complete OTP.')),
-                  );
-                }
+                Get.toNamed(AppRoutes.passwordRoute);
+              //   String otp = getOtp();
+              //   if (otp.length == otpLength) {
+              //     verifyOtp(otp);
+              //     print('Entered OTP: $otp');
+              //   } else {
+              //     ScaffoldMessenger.of(context).showSnackBar(
+              //       SnackBar(content: Text('Please enter a complete OTP.')),
+              //     );
+              //   }
               },
               title: "Submit",
               color: AppColor.buttonColor,

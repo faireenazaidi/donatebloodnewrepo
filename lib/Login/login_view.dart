@@ -2,6 +2,7 @@ import 'package:donationdiversity/Widgets/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:hexcolor/hexcolor.dart';
 import '../Routes/app_routes.dart';
 import '../Widgets/myButton.dart';
 import '../Widgets/primary_text_field.dart';
@@ -13,6 +14,7 @@ class LoginView extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(LoginController());
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -41,7 +43,7 @@ class LoginView extends GetView<LoginController> {
                     SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
+                        border: Border.all(color: HexColor('DDB887')),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: ClipRRect(
@@ -66,21 +68,23 @@ class LoginView extends GetView<LoginController> {
                       obscureText: false,
                     ),
                     SizedBox(height: 20),
-                    PrimaryTextField(
-                      controller: TextEditingController(),
+                    Obx((){
+                      return PrimaryTextField(
+                        controller: controller.passwordController,
                         onChanged: (value) => controller.pass.value = value,
-                      prefixIcon: Icon(Icons.lock_outline_rounded),
-                      hintText: "Enter password",
-                      obscureText: controller.isPassObscured.value,
-                      suffixIcon: IconButton(
-                        icon: Icon(controller.isPassObscured.value
-                            ? Icons.visibility_off
-                            : Icons.visibility),
-                        onPressed: () {
-                          controller.togglePassVisibility();
-                        },
-                      ),
-                    ),
+                        prefixIcon: Icon(Icons.lock_outline_rounded),
+                        hintText: "Enter password",
+                        obscureText: controller.isPassObscured.value,
+                        suffixIcon: IconButton(
+                          icon: Icon(controller.isPassObscured.value
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                          onPressed: () {
+                            controller.togglePassVisibility();
+                          },
+                        ),
+                      );
+                    }),
                     SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -129,7 +133,7 @@ class LoginView extends GetView<LoginController> {
                       borderRadius: 10,
                       elevation: 2,
                       onPressed: () {
-                        controller.login(context);
+                         controller.login(context);
                       },
                       title: "Sign in",
                       color: AppColor.buttonColor,

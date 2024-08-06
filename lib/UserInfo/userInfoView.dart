@@ -39,9 +39,9 @@ class UserInfoView extends GetView<UserInfoController> {
                 child: Form(
                   key: _formKey,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(height: 40),
+                      SizedBox(height: 20),
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(color: HexColor('DDB887')),
@@ -51,7 +51,7 @@ class UserInfoView extends GetView<UserInfoController> {
                           borderRadius: BorderRadius.circular(15),
                           child: Image.asset(
                             "assets/ddlogo.png",
-                            height: 135,
+                            height: 140,
                           ),
                         ),
                       ),
@@ -132,6 +132,7 @@ class UserInfoView extends GetView<UserInfoController> {
                           prefixIcon: Icon(Icons.phone),
                           backgroundColor: Colors.white,
                           hintText: "Enter your Number",
+                          keyboardType: TextInputType.number,
                           obscureText: false,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -151,7 +152,7 @@ class UserInfoView extends GetView<UserInfoController> {
                           elevation: 2,
                           onPressed: () {
                             if (_formKey.currentState?.validate() ?? false) {
-                              Get.toNamed(AppRoutes.dashboardRoute);
+                              //Get.toNamed(AppRoutes.dashboardRoute);
                               controller.register(context);
                             }
                           },
