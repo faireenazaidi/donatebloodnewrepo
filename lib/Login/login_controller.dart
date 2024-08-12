@@ -1,11 +1,12 @@
+
 import 'dart:convert';
-import 'package:donationdiversity/Routes/app_routes.dart';
+import 'package:donationdiversity/Widgets/userStorage.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../Widgets/app_util.dart';
+import 'package:donationdiversity/Routes/app_routes.dart';
 
 class LoginController extends GetxController {
   TextEditingController usernameController = TextEditingController();
@@ -13,16 +14,15 @@ class LoginController extends GetxController {
   RxBool isChecked = false.obs;
   RxBool isPassObscured = true.obs;
   var pass = ''.obs;
-  void togglePassVisibility()
-  {
+
+  void togglePassVisibility() {
     isPassObscured.value = !isPassObscured.value;
   }
-  App app = App();
 
   final storage = FlutterSecureStorage();
 
   void login(BuildContext context) async {
-    var url = Uri.parse('https://5b42-14-97-58-74.ngrok-free.app/API/Login/userLogin');
+    var url = Uri.parse('https://7b6d-14-97-58-74.ngrok-free.app/API/Login/userLogin');
 
     try {
       // Send POST request to login endpoint
@@ -37,41 +37,46 @@ class LoginController extends GetxController {
         }),
       );
 
-      if (response.statusCode == 200) {
-        var jsonResponse = jsonDecode(response.body);
-        print('Login successful: $jsonResponse');
+      var jsonResponse = jsonDecode(response.body);
+      print('Login successful: $jsonResponse');
 
-        // if (isChecked.value) {
-        //   await storage.write(key: 'email', value: usernameController.text);
-        //   await storage.write(key: 'password', value: passwordController.text);
-        // } else {
-        //   await storage.delete(key: 'email');
-        //   await storage.delete(key: 'password');
-        // }
+      if (response.statusCode == 200) {
+        print("@@@@@@@@" + jsonResponse.toString());
+        print("@@@@@@@@" + jsonResponse['responseValue'].toString());
+
+        var loginDetails = jsonResponse['responseValue'];
+        // var dd = loginDetails['loginDetails'];
+        print("!!!!!!"+loginDetails['loginDetails'].toString());
+
+        // Store login details securely
+        //await storage.write(key: 'loginDetails', value: jsonEncode(loginDetails));
+        UserStorage().addUserData(loginDetails['loginDetails']);
+       // print("LocalStorageData "+UserStorage().getLoginUserStorage[0].firstName.toString());
+
+
+        // Optionally, store username and password if checkbox is checked
+        if (isChecked.value) {
+          await storage.write(key: 'email', value: usernameController.text);
+          await storage.write(key: 'password', value: passwordController.text);
+        } else {
+          await storage.delete(key: 'email');
+          await storage.delete(key: 'password');
+        }
 
         // Navigate to dashboard route
         Get.toNamed(AppRoutes.dashboardRoute);
-
       } else {
         print('Login failed with status code ${response.statusCode}');
       }
     } catch (e) {
-      // Handle any exceptions thrown during the request
       print('Error during login: $e');
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text('Error'),
-          content: Text('An error occurred. Please try again later.'),
-          actions: <Widget>[
-            TextButton(
-              child: Text('OK'),
-              onPressed: () {
-               Get.back();
-              },
-            ),
-          ],
-        ),
+      Fluttertoast.showToast(
+        msg: 'Please try again later',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.black,
       );
     }
   }
@@ -95,3 +100,6 @@ class LoginController extends GetxController {
     loadCredentials();
   }
 }
+
+
+

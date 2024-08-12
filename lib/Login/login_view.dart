@@ -1,12 +1,12 @@
 import 'package:donationdiversity/Widgets/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:hexcolor/hexcolor.dart';
 import '../Routes/app_routes.dart';
 import '../Widgets/myButton.dart';
 import '../Widgets/primary_text_field.dart';
 import '../Widgets/text_theme.dart';
+import '../Widgets/userStorage.dart';
 import 'login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -15,6 +15,7 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     Get.put(LoginController());
+
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -23,7 +24,7 @@ class LoginView extends GetView<LoginController> {
             Container(
               height: Get.height,
               width: Get.width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.black,
                 image: DecorationImage(
                   image: AssetImage('assets/bg.png'),
@@ -40,7 +41,7 @@ class LoginView extends GetView<LoginController> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: HexColor('DDB887')),
@@ -54,25 +55,35 @@ class LoginView extends GetView<LoginController> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Text(
                       "Login",
                       style: MyTextTheme.veryLargeWCN,
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     PrimaryTextField(
                       controller: controller.usernameController,
-                      prefixIcon: Icon(Icons.email_outlined),
+                      prefixIcon: const Icon(Icons.email_outlined),
                       hintText: "Enter your email",
                       backgroundColor: Colors.white,
                       obscureText: false,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return '*Please enter an email';
+                        }
+                        final regex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+                        if (!regex.hasMatch(value)) {
+                          return '*Enter a valid email address';
+                        }
+                        return null;
+                      },
                     ),
-                    SizedBox(height: 20),
-                    Obx((){
+                    const SizedBox(height: 20),
+                    Obx(() {
                       return PrimaryTextField(
                         controller: controller.passwordController,
                         onChanged: (value) => controller.pass.value = value,
-                        prefixIcon: Icon(Icons.lock_outline_rounded),
+                        prefixIcon: const Icon(Icons.lock_outline_rounded),
                         hintText: "Enter password",
                         obscureText: controller.isPassObscured.value,
                         suffixIcon: IconButton(
@@ -83,9 +94,15 @@ class LoginView extends GetView<LoginController> {
                             controller.togglePassVisibility();
                           },
                         ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return '*Please enter a password';
+                          }
+                          return null;
+                        },
                       );
                     }),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -108,7 +125,7 @@ class LoginView extends GetView<LoginController> {
                               borderRadius: BorderRadius.circular(2.0),
                             ),
                             child: controller.isChecked.value
-                                ? Icon(
+                                ? const Icon(
                               Icons.check,
                               size: 18.0,
                               color: Colors.green,
@@ -116,36 +133,38 @@ class LoginView extends GetView<LoginController> {
                                 : null,
                           ),
                         )),
-                        SizedBox(width: 8),
+                        const SizedBox(width: 8),
                         Text(
                           "Remember me",
                           style: MyTextTheme.mediumBCN,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Text(
                           "Forgot Password?",
                           style: MyTextTheme.mediumBCN,
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     MyButton(
                       borderRadius: 10,
                       elevation: 2,
-                      onPressed: () {
-                         controller.login(context);
-                      },
                       title: "Sign in",
                       color: AppColor.buttonColor,
-                      suffixIcon: Icon(
+                      suffixIcon: const Icon(
                         Icons.arrow_forward,
                         color: Colors.white,
                       ),
+                      onPressed: () async {
+                        controller.login(context);
+                        // final secureStorage = SecureStorageService();
+                        // await secureStorage.saveLoginStatus(true);
+                      },
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     Row(
                       children: <Widget>[
-                        Expanded(
+                        const Expanded(
                           child: Divider(
                             color: Colors.white,
                             indent: 120,
@@ -153,12 +172,12 @@ class LoginView extends GetView<LoginController> {
                             thickness: 0.6,
                           ),
                         ),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Text(
                           "or",
                           style: MyTextTheme.mediumBCN,
                         ),
-                        Expanded(
+                        const Expanded(
                           child: Divider(
                             color: Colors.white,
                             endIndent: 110,
@@ -196,4 +215,5 @@ class LoginView extends GetView<LoginController> {
       ),
     );
   }
+
 }

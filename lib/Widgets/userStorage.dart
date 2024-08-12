@@ -1,42 +1,77 @@
-// import 'package:get_storage/get_storage.dart';
-// import 'package:get/get.dart';
-// import '../Login/login_view.dart';
-// class UserStorage extends GetxController {
-//   final userStorage = GetStorage('user');
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import '../Login/login_data_modal.dart';
+
+class SecureStorageService {
+  final FlutterSecureStorage _storage = FlutterSecureStorage();
+
+  Future<void> saveLoginStatus(bool isLoggedIn) async {
+    await _storage.write(key: 'isLoggedIn', value: isLoggedIn.toString());
+  }
+
+  Future<bool> getLoginStatus() async {
+    final String? status = await _storage.read(key: 'isLoggedIn');
+    return status == 'true';
+  }
+}
+
+ class UserStorage extends GetxController {
+   final userStorage = GetStorage('user');
+
+   addUserData(List val) async {
+    await userStorage.write('userData', val);
+    update();
+  }
+
+   List<LoginDataModal> get getLoginUserStorage {
+     List uniData  = userStorage.read('universityData');
+     return List<LoginDataModal>.from(uniData.map((e) => LoginDataModal.fromJson(e))).toList();
+   }
+   // LoginDataModal get getLoginUserStorage =>
+   //     LoginDataModal.fromJson(userStorage.read('userData') ?? {});
+
+
+   removeUserData() async {
+    await userStorage.remove('userData');
+    //await userStorage.remove('userToken');
+    update();
+  }
+
+ }
 //
 //
-//   addToken(String val) async{
+//   addToken(String val) async {
 //     await userStorage.write('userToken', val);
 //     update();
 //   }
-//   String get getUserToken => (userStorage.read('userToken') ?? "") ;
 //
-//   addDeviceToken(String val) async{
+//   String get getUserToken => (userStorage.read('userToken') ?? "");
+//
+//   addDeviceToken(String val) async {
 //     await userStorage.write('deviceToken', val);
 //     update();
 //   }
 //
-//   String get getDeviceToken => (userStorage.read('deviceToken') ?? "") ;
+//   String get getDeviceToken => (userStorage.read('deviceToken') ?? "");
 //
 //   addUserData(Map val) async {
 //     await userStorage.write('userData', val);
 //     update();
 //   }
 //
-//   LoginView get getLoginUserStorage=>LoginView.fromJson(userStorage.read('userData')??{});
+//   LoginView get getLoginUserStorage =>
+//       LoginView.fromJson(userStorage.read('userData') ?? {});
 //
-//   readUnreadCount(List<Map> val) async{
+//   readUnreadCount(List<Map> val) async {
 //     await userStorage.write('readUnreadCount', val);
 //     update();
 //   }
 //
-//   String get getReadUnreadCount => (userStorage.read('readUnreadCount') ?? "") ;
+//   String get getReadUnreadCount => (userStorage.read('readUnreadCount') ?? "");
 //
-//   removeUserData() async{
-//     await userStorage.remove('userData');
-//     await userStorage.remove('userToken');
-//     update();
-//   }
+
 //
 //   addGetCurrentDatePendingBacklog(List val) async {
 //     await userStorage.write('GetCurrentDatePendingBacklog', val);
@@ -55,7 +90,7 @@
 //
 //
 //   List<ChatDataModal> get userCommentList=>List<ChatDataModal>.from(
-//       userStorage.read('CommentList').map((e)=>ChatDataModal.fromJson(e)),
+//       userStorage.read('CommentList').map((e)=>ChatDataModal.fromJson(e));
 //   if (responseData.statusCode == 200) {
 //   print("Faireena${responseData.body}");
 //   ProgressDialogue().hide();
@@ -105,3 +140,4 @@
 // }
 //
 //
+

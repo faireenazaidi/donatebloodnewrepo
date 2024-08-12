@@ -1,3 +1,4 @@
+import 'package:donationdiversity/Widgets/userStorage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -60,6 +61,10 @@ List category=[
       ),
     );
     return shouldExit ?? false;
+  }
+
+  logout(){
+    UserStorage().removeUserData();
   }
 
   }
