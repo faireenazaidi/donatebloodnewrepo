@@ -20,15 +20,30 @@ class SecureStorageService {
  class UserStorage extends GetxController {
    final userStorage = GetStorage('user');
 
-   addUserData(List val) async {
+   addUserData(Map val) async {
     await userStorage.write('userData', val);
     update();
   }
 
-   List<LoginDataModal> get getLoginUserStorage {
-     List uniData  = userStorage.read('universityData');
-     return List<LoginDataModal>.from(uniData.map((e) => LoginDataModal.fromJson(e))).toList();
-   }
+   Map<String, dynamic> get getUserData => userStorage.read('userData') ?? {};
+
+   String get getUserId => getUserData.isNotEmpty ? getUserData['id'].toString():'';
+   String get getUserCategoryId => getUserData.isNotEmpty ? getUserData['categoryId'].toString():'';
+   String get getUserName => getUserData.isNotEmpty ? getUserData['firstName'].toString():'';
+   String get getUserLastName => getUserData.isNotEmpty ? getUserData['lastLame'].toString():'';
+   String get getUserName2 => getUserData.isNotEmpty ? getUserData['name'].toString():'';
+   String get getUserEmail => getUserData.isNotEmpty ? getUserData['emailId'].toString():'';
+   String get getUserMobileNo => getUserData.isNotEmpty ? getUserData['mobileNo'].toString():'';
+   String get getUserAddress => getUserData.isNotEmpty ? getUserData['address'].toString():'';
+   String get getUserPersonalID => getUserData.isNotEmpty ? getUserData['personalID'].toString():'';
+   String get getUserCategory => getUserData.isNotEmpty ? getUserData['category'].toString():'';
+   String get getUserPassword => getUserData.isNotEmpty ? getUserData['password'].toString():'';
+
+
+   // List<LoginDataModal> get getLoginUserStorage {
+   //   List uniData  = userStorage.read('universityData');
+   //   return List<LoginDataModal>.from(uniData.map((e) => LoginDataModal.fromJson(e))).toList();
+   // }
    // LoginDataModal get getLoginUserStorage =>
    //     LoginDataModal.fromJson(userStorage.read('userData') ?? {});
 

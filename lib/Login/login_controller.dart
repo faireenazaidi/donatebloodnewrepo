@@ -22,7 +22,7 @@ class LoginController extends GetxController {
   final storage = FlutterSecureStorage();
 
   void login(BuildContext context) async {
-    var url = Uri.parse('https://7b6d-14-97-58-74.ngrok-free.app/API/Login/userLogin');
+    var url = Uri.parse('https://f436-14-97-58-74.ngrok-free.app/API/Login/userLogin');
 
     try {
       // Send POST request to login endpoint
@@ -43,15 +43,15 @@ class LoginController extends GetxController {
       if (response.statusCode == 200) {
         print("@@@@@@@@" + jsonResponse.toString());
         print("@@@@@@@@" + jsonResponse['responseValue'].toString());
+        print("@@@@@@@@" + jsonResponse['responseValue']['loginDetails'][0].toString());
 
-        var loginDetails = jsonResponse['responseValue'];
-        // var dd = loginDetails['loginDetails'];
-        print("!!!!!!"+loginDetails['loginDetails'].toString());
 
-        // Store login details securely
-        //await storage.write(key: 'loginDetails', value: jsonEncode(loginDetails));
-        UserStorage().addUserData(loginDetails['loginDetails']);
-       // print("LocalStorageData "+UserStorage().getLoginUserStorage[0].firstName.toString());
+        var dd = jsonResponse['responseValue']['loginDetails'][0];
+
+
+        await UserStorage().addUserData(dd);
+        print("sssssssssssss"+UserStorage().getUserData['firstName'].toString());
+        print("sssssssssssss"+UserStorage().getUserName.toString());
 
 
         // Optionally, store username and password if checkbox is checked

@@ -68,7 +68,7 @@ class DashboardView extends GetView<DashboardController> {
               title: const flutter.Text('View Profile', style: TextStyle(color: Colors.white,),),
               tileColor: AppColor.tile2Color,
               onTap: () {
-                Get.back();
+                // Get.back();
                 Get.toNamed(AppRoutes.profileView);
               },
             ),
@@ -78,6 +78,15 @@ class DashboardView extends GetView<DashboardController> {
               tileColor: AppColor.tile3Color,
               onTap: () {
                 // Handle donate tap
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.description_outlined, color: Colors.white,),
+              title: const flutter.Text('Demand Form', style: TextStyle(color: Colors.white,),),
+              tileColor: AppColor.tile3Color,
+              onTap: () {
+                // Get.back();
+                Get.toNamed(AppRoutes.demandForm);
               },
             ),
             ListTile(

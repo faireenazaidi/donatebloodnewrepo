@@ -23,7 +23,7 @@ import 'app_color.dart';
 //String imageUrl='http://192.168.8.2:127/assets/images/';
 
 // Local URL
-String baseUrl='https://b142-14-97-58-74.ngrok-free.app/';
+String baseUrl='https://f436-14-97-58-74.ngrok-free.app/';
 String sentenceMatchApi='http://172.16.19.195:5000/';
 
 

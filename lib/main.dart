@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:donationdiversity/Widgets/userStorage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,17 +21,19 @@ void main() async {
   );
 
   // Check if the user is logged in
-  final storage = FlutterSecureStorage();
-  String? loginDetails = await storage.read(key: 'loginDetails');
-  bool isLoggedIn = loginDetails != null;
+  // final storage = FlutterSecureStorage();
+  // String? loginDetails = await storage.read(key: 'loginDetails');
+  // bool isLoggedIn = loginDetails != null;
 
-  runApp(MyApp(isLoggedIn: isLoggedIn));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final bool isLoggedIn;
 
-  const MyApp({Key? key, required this.isLoggedIn}) : super(key: key);
+
+  const MyApp({Key? key, }) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +44,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: isLoggedIn ? AppRoutes.dashboardRoute : AppRoutes.loginRoute,
+      // initialRoute: isLoggedIn ? AppRoutes.dashboardRoute : AppRoutes.loginRoute,
+      initialRoute: AppRoutes.splashScreen,
       getPages: AppRoutes.pages,
     );
   }
+
+
+
+
 }

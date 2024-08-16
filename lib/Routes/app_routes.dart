@@ -10,6 +10,8 @@ import '../ChangePassword/changePassBinding.dart';
 import '../ChangePassword/changepassView.dart';
 import '../Dashboard/dashboard.view.dart';
 import '../Dashboard/dashboardBinding.dart';
+import '../DemandForm/demandFormBinding.dart';
+import '../DemandForm/demandFormView.dart';
 import '../Login/login_bining.dart';
 import '../Login/login_view.dart';
 import '../Profile/profileBinding.dart';
@@ -31,6 +33,7 @@ class AppRoutes {
   static const String changePassRoute = '/changePass';
   static const String profileView = '/profile';
   static const String splashScreen = '/splash';
+  static const String demandForm = '/demand';
 
   static List<GetPage> pages = [
     GetPage(
@@ -78,6 +81,11 @@ class AppRoutes {
         name: splashScreen,
         page: ()=> SplashScreen(),
   bindings: [SplashBinding()]
+    ),
+    GetPage(
+        name: demandForm,
+        page: ()=> DemandFormView(),
+        bindings: [DemandFormBinding()]
     ),
 
   ];
