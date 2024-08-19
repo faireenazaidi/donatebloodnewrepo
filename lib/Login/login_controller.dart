@@ -22,7 +22,7 @@ class LoginController extends GetxController {
   final storage = FlutterSecureStorage();
 
   void login(BuildContext context) async {
-    var url = Uri.parse('https://f436-14-97-58-74.ngrok-free.app/API/Login/userLogin');
+    var url = Uri.parse('https://d0c8-14-97-58-74.ngrok-free.app/API/Login/userLogin');
 
     try {
       // Send POST request to login endpoint
@@ -41,11 +41,6 @@ class LoginController extends GetxController {
       print('Login successful: $jsonResponse');
 
       if (response.statusCode == 200) {
-        print("@@@@@@@@" + jsonResponse.toString());
-        print("@@@@@@@@" + jsonResponse['responseValue'].toString());
-        print("@@@@@@@@" + jsonResponse['responseValue']['loginDetails'][0].toString());
-
-
         var dd = jsonResponse['responseValue']['loginDetails'][0];
 
 
