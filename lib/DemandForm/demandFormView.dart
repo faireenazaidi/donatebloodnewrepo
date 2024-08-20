@@ -12,15 +12,26 @@ class DemandFormView extends  GetView<DemandFormController> {
     final DemandFormController controller = Get.put(DemandFormController());
 
     return Scaffold(
-      appBar: AppBar(title: Text('DropDown Example')),
-      body: Center(
-        child: MyCustomSd(
-          listToSearch: controller.getItemSearch,
-          valFrom: 'name',
-          onChanged: (val){
-            print("@@@@@@@@");
-          },)
-      ),
+      appBar: AppBar(title: const Text('Demand Form'),
+
+      )
+        ,
+      body: Column(
+        children: [Padding(
+          padding: const EdgeInsets.all(8.0),
+          child:
+          Obx((){
+            return MyCustomSd(
+              listToSearch: controller.getItemSearch.value,
+              valFrom: 'name',
+              onChanged: (val){
+                print("@@@@@@@@"+val.toString());
+              },);
+          })
+    ),
+
+        ]
+    )
     );
   }
 }

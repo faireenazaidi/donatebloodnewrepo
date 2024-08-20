@@ -14,6 +14,7 @@ import 'package:flutter/material.dart' as flutter;
 
 class DashboardView extends GetView<DashboardController> {
   final DashboardController dashboardController = Get.put(DashboardController());
+  final LogoutController _logoutController = Get.put(LogoutController());
   DateTime? lastPressed;
 
   @override
@@ -110,9 +111,12 @@ class DashboardView extends GetView<DashboardController> {
                 leading: const Icon(Icons.logout, color: Colors.white,),
                 title: const flutter.Text('Logout', style: TextStyle(color: Colors.white,),),
                 tileColor: AppColor.tile6Color,
-                onTap: () {
-                  _handleLogout();
-                }
+                onTap: () async{
+                    await _logoutController.logout();
+                  }
+
+
+
             ),
           ],
         ),
@@ -255,7 +259,7 @@ class DashboardView extends GetView<DashboardController> {
                                 children: [
                                   Icon(Icons.person_outline_outlined, color: AppColor.buttonColor,),
                                   const SizedBox(width: 10,),
-                                  flutter.Text(dashboardController.category[index]['count'].toString()),
+                                  flutter.Text(dashboardController.category[index]['member'].toString()),
                                 ],
                               ),
                             ),
@@ -271,7 +275,5 @@ class DashboardView extends GetView<DashboardController> {
     );
   }
 
-  void _handleLogout() {
-    // Implement your logout logic here
-  }
+
 }

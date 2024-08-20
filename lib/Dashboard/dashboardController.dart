@@ -68,6 +68,21 @@ List category=[
   }
 
   }
+class LogoutController extends GetxController {
+  final SecureStorageService _secureStorageService = SecureStorageService();
+  final UserStorage _userStorage = Get.put(UserStorage());
+
+  Future<void> logout() async {
+    // Clear the login status from secure storage
+    await _secureStorageService.saveLoginStatus(false);
+
+    // Clear user data from GetStorage
+    await _userStorage.removeUserData();
+
+    // Optionally, navigate to the login screen or any other appropriate screen
+    Get.offAllNamed('/login');  // This will clear the navigation stack and take the user to the login screen.
+  }
+}
 
 
 

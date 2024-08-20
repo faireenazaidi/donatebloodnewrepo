@@ -8,7 +8,6 @@ import 'package:http/http.dart'as http;
 class DemandFormController extends GetxController {
 
  UserStorage userStorage = UserStorage();
-
  @override
  void onInit() {
   fetchItems();
@@ -16,11 +15,11 @@ class DemandFormController extends GetxController {
  }
 
 
- List itemToSearch=[];
- List get getItemSearch => itemToSearch;
+ RxList itemToSearch=[].obs;
+ RxList get getItemSearch => itemToSearch;
  set updateItemList(List val )
  {
-  itemToSearch=val;
+  itemToSearch.value=val;
   update();
  }
 
@@ -30,7 +29,7 @@ class DemandFormController extends GetxController {
   var headers = {
    'Content-Type': 'application/json'
   };
-  var request = http.Request('POST', Uri.parse('https://d0c8-14-97-58-74.ngrok-free.app/API/demand/getItemList'));
+  var request = http.Request('POST', Uri.parse('https://ce48-14-97-58-74.ngrok-free.app/API/demand/getItemList'));
   request.body = json.encode({
    "id": userStorage.getUserId.toString(),
   });

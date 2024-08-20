@@ -96,7 +96,10 @@ class LoginView extends GetView<LoginController> {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return '*Please enter a password';
+                            return 'Password is required';
+                          }
+                          if (value.length < 4) {
+                            return 'Password must be at least 4 characters';
                           }
                           return null;
                         },
