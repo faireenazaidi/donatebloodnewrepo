@@ -35,7 +35,7 @@ class ProfileController extends GetxController {
     isLoading.value = true;
 
     try {
-      final response = await http.get(Uri.parse('https://b142-14-97-58-74.ngrok-free.app/userProfile/getUserDetails/$userId'));
+      final response = await http.get(Uri.parse('https://b874-14-97-58-74.ngrok-free.app/userProfile/getUserDetails/$userId'));
 
       if (response.statusCode == 200) {
         profileData.value = jsonDecode(response.body);

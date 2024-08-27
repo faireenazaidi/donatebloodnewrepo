@@ -29,7 +29,7 @@ class DemandFormController extends GetxController {
   var headers = {
    'Content-Type': 'application/json'
   };
-  var request = http.Request('POST', Uri.parse('https://ce48-14-97-58-74.ngrok-free.app/API/demand/getItemList'));
+  var request = http.Request('POST', Uri.parse('https://b874-14-97-58-74.ngrok-free.app/APIdemand/getItemList'));
   request.body = json.encode({
    "id": userStorage.getUserId.toString(),
   });

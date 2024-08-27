@@ -216,13 +216,13 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ),
             ),
-            SizedBox(height: 20,),
-            ElevatedButton(
-              onPressed: () {
-                controller.updateProfile();
-              },
-              child: Text("Save"),
-            ),
+            // SizedBox(height: 20,),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     controller.updateProfile();
+            //   },
+            //   child: Text("Save"),
+            // ),
           ],
         ),
       ),

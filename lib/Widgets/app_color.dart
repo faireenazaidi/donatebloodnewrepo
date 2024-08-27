@@ -22,15 +22,6 @@ class AppColor {
   static final greyDark= ("#6c6c6c").toColor();
   static final ultraGreyDark= ("#F9F9F9").toColor();
 
-  static final green= ("#74b49a").toColor();
-  static final darkGreen= ("#0E7311").toColor();
-  static final blue= ("#355c7d").toColor();
-  static final red= Colors.red.shade700;
-
-  static final Color purple = '#412196'.toColor();
-  static final Color yellow = '#e37703'.toColor();
-  static final Color pink = '#ec5243'.toColor();
-
   static final Color themeColor = '#2B97A3'.toColor();
   static final Color packageGray = '#EBEBEB'.toColor();
   static final Color lightGrey = '#E9E9E9'.toColor();
@@ -51,13 +42,11 @@ class AppColor {
   static final Color offerColor = '#1A7984'.toColor();
 
 
-  // FOR ADD ADDRESS
   static final Color textFieldColor = ('#F9F9F9').toColor();
   static final Color hintTextColor = ('#D2D2D2').toColor();
   static final Color labelColor = ('#515865').toColor();
   static final Color radioButtonColor = ('#CCCCCC').toColor();
 
-//For Payment Details
 
   static final Color paymentDetailsGrey = ('#707070').toColor();
   static final Color paymentDetailsBlack = ('#707070').toColor();

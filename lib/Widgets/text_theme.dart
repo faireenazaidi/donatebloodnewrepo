@@ -42,11 +42,7 @@ class MyTextTheme  {
       fontSize: 22,
       fontWeight: FontWeight.normal
   );
-  static TextStyle largePCN=GoogleFonts.roboto(
-      color: AppColor.pink,
-      fontSize: 18,
-      fontWeight: FontWeight.normal
-  );
+
   static TextStyle mediumPCN=GoogleFonts.roboto(
       color: AppColor.primaryColorLight,
       fontSize: 14,

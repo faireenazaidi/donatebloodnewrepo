@@ -16,7 +16,7 @@ class ChangePassController extends GetxController {
 
     try {
       final response = await http.post(
-        Uri.parse(""),
+        Uri.parse("https://b874-14-97-58-74.ngrok-free.app/API/"),
         body: {
           'new_password': newPassword.value,
           'confirm_password': confirmPassword.value,

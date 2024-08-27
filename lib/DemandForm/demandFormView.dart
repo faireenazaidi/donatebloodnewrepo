@@ -13,25 +13,41 @@ class DemandFormView extends  GetView<DemandFormController> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Demand Form'),
-
-      )
-        ,
+        actions: [
+          TextButton(
+              onPressed: (){
+                _showBottomPopUp();
+              },
+               child: Text("Click Me"),)
+        ],
+      ),
       body: Column(
         children: [Padding(
           padding: const EdgeInsets.all(8.0),
-          child:
-          Obx((){
-            return MyCustomSd(
-              listToSearch: controller.getItemSearch.value,
-              valFrom: 'name',
-              onChanged: (val){
-                print("@@@@@@@@"+val.toString());
-              },);
-          })
+
+
     ),
 
         ]
     )
+    );
+  }
+  void _showBottomPopUp(){
+    Get.bottomSheet(
+      Container(
+        height: 200,
+
+        child:
+        Obx((){
+          return MyCustomSd(
+            listToSearch: controller.getItemSearch.value,
+            valFrom: 'name',
+            onChanged: (val){
+              print("@@@@@@@@"+val.toString());
+            },);
+        }),
+      )
+
     );
   }
 }

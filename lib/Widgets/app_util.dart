@@ -11,19 +11,12 @@ import 'package:donationdiversity/Widgets/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:lottie/lottie.dart';
-
 import 'app_color.dart';
 
 
-
-// Live URL
-//String baseUrl='http://182.156.200.179:201/api/';
-//String imageUrl='http://192.168.8.2:127/assets/images/';
-
 // Local URL
-String baseUrl='https://f436-14-97-58-74.ngrok-free.app/';
+String baseUrl='https://b874-14-97-58-74.ngrok-free.app/';
 String sentenceMatchApi='http://172.16.19.195:5000/';
 
 
@@ -250,174 +243,6 @@ class App {
 
 
 }
-
-
-// class MultiPart {
-//
-//   multipart(String filePath) async{
-//     print(filePath);
-//     return  await MultipartFile.fromFile(filePath);
-//   }
-//
-//
-//   api(url,body,context,{
-//     imagePath,
-//     imagePathName,
-//     String? fullUrl
-//   })
-//   async {
-//     // dio.options.contentType= Headers.formUrlEncodedContentType;
-//     try{
-//
-//       print(imagePath.toString());
-//       print(fullUrl??(baseUrl+url));
-//       print(body.toString());
-//       //print(user.getUserToken.toString());
-//
-//       var headers = {
-//         'accessToken': ""//user.getUserToken.toString()
-//       };
-//
-//       var request = http.MultipartRequest('POST', Uri.parse(fullUrl??(baseUrl+url)));
-//
-//       request.fields.addAll(body);
-//       request.files.add(await http.MultipartFile.fromPath(imagePathName ?? 'file', imagePath.toString()));
-//       request.headers.addAll(headers);
-//       http.StreamedResponse response = await request.send();
-//
-//
-//       // if (response.statusCode == 200) {
-//       //   print(await response.stream.bytesToString());
-//       // }
-//       // else {
-//       //   print(response.reasonPhrase);
-//       // }
-//       var data={
-//         'status':  response.statusCode==200? 1: 0,
-//         'data': await response.stream.bytesToString(),
-//       };
-//       print(data.toString());
-//
-//       return  data;
-//
-//
-//     }
-//     on SocketException {
-//       print('No Internet connection');
-//       var retry=await apiDialogue(context,'Alert', 'Internet connection issue, try to reconnect.',
-//       );
-//       if(retry){
-//         var data= await api(url,body,context,
-//             imagePath: imagePath,
-//             fullUrl: fullUrl
-//         );
-//         return data;
-//       }
-//       else{
-//         return cancelResponse;
-//       }
-//       // return res;
-//     }
-//     on TimeoutException catch (e) {
-//       print('Time Out '+e.toString());
-//       var retry=await apiDialogue(context,'Alert', 'Time Out, plz check your connection.',
-//       );
-//       if(retry){
-//         var data= await api(url,body,context,
-//             imagePath: imagePath,
-//             fullUrl: fullUrl);
-//         return data;
-//       }
-//       else{
-//         return cancelResponse;
-//       }
-//     }
-//     catch (e) {
-//       print('Error in Api: $e');
-//       var retry=await apiDialogue(context,'Alert', 'Some Error Occur, plz check your connection.',
-//       );
-//       if(retry){
-//         var data= await api(url,body,context,
-//             imagePath: imagePath,
-//             fullUrl: fullUrl);
-//         return data;
-//       }
-//       else{
-//         return cancelResponse;
-//       }
-//     }
-//
-//   }
-//
-//
-//   apiForSentenceMatch(url,body,context)
-//   async {
-//     try{
-//
-//       print(body.toString());
-//       //print(user.getUserToken.toString());
-//       var headers = {
-//         'accessToken': ""//user.getUserToken.toString()
-//       };
-//
-//       var request = http.MultipartRequest('POST', Uri.parse(sentenceMatchApi+url));
-//
-//       request.fields.addAll(body);
-//       request.headers.addAll(headers);
-//       http.StreamedResponse response = await request.send();
-//       var data={
-//         'status':  response.statusCode==200? 1: 0,
-//         'data': await response.stream.bytesToString(),
-//       };
-//       print(data.toString());
-//
-//       return  data;
-//     }
-//     on SocketException {
-//       print('No Internet connection');
-//       var retry=await apiDialogue(context,'Alert', 'Internet connection issue, try to reconnect.',
-//       );
-//       if(retry){
-//         var data= await apiForSentenceMatch(url,body,context
-//         );
-//         return data;
-//       }
-//       else{
-//         return cancelResponse;
-//       }
-//     }
-//     on TimeoutException catch (e) {
-//       print('Time Out '+e.toString());
-//       var retry=await apiDialogue(context,'Alert', 'Time Out, plz check your connection.',
-//       );
-//       if(retry){
-//         var data= await apiForSentenceMatch(url,body,context);
-//         return data;
-//       }
-//       else{
-//         return cancelResponse;
-//       }
-//     }
-//     catch (e) {
-//       print('Error in Api: $e');
-//       var retry=await apiDialogue(context,'Alert', 'Some Error Occur, plz check your connection.',
-//       );
-//       if(retry){
-//         var data= await apiForSentenceMatch(url,body,context);
-//         return data;
-//       }
-//       else{
-//         return cancelResponse;
-//       }
-//     }
-//
-//   }
-//
-//
-//
-//
-// }
-
 
 
 
